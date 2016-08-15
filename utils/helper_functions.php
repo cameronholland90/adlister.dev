@@ -242,7 +242,8 @@ function saveUploadedImage($input_name)
         {
 
             $tempFile = $_FILES[$input_name]['tmp_name'];
-            $newName = substr($tempFile, 4);
+            $positionOfLastSlash = strrpos($tempFile, '/');
+            $newName = substr($tempFile, $positionOfLastSlash);
             $extension = pathinfo($_FILES[$input_name]['name'], PATHINFO_EXTENSION);
 
             // Validate Size and Extension
